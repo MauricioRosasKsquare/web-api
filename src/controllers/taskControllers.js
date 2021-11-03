@@ -28,7 +28,7 @@ const updateTask = (req, res) => {
 
     if (task) {
       Object.assign(task, body);
-      Task.update(task);
+      Task.update(tasks);
       res.send({
         message: 'Task successfully updated!!!',
       });
