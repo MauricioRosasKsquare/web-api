@@ -20,6 +20,11 @@ app.use((req, res) => {
   });
 });
 
+var http = require("http");
+setInterval(function() {
+    http.get("https://mauricio-rosas-api.herokuapp.com");
+}, 300000); 
+
 // Start server
 app.listen(PORT, () => {
   console.log(`API listening at http://localhost:${PORT}`)
