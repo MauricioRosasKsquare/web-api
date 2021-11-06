@@ -1,23 +1,22 @@
-const { Task } = require('../models');
+const  Task  = require('../models/Task');
 
 // All middelwares
 function duplicated(req, res, next) {
     
     let task; 
-    Task.getAll((tasks)=> {
-
-        task = tasks.filter(ent => (ent.description == req.body.description));
+    Task.find({ description: req.body.description}, function (err, task) {
 
         if(task.length === 0){
             next();
         }else{
-            res.status(404).send({
+            return res.status(404).send({
                 message:  'Task already exist'
             });
         }
         
     }); 
 }
+
 
 function noEmpty(req, res, next){
 
